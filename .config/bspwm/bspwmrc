@@ -1,0 +1,35 @@
+#! /bin/sh
+
+#
+# ~/.config/bspwm/bspwmrc
+#
+
+# behaviour
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config single_monocle       true
+
+# workspaces
+bspc monitor -d 1 2 3 4 5
+
+# rules
+bspc rule -a feh state=floating
+bspc rule -a glfw state=floating
+bspc rule -a Zathura state=tiled
+
+# appearance
+bspc config border_width         2
+bspc config window_gap          12
+
+# autostart
+if ! pgrep "sxhkd" > /dev/null; then
+	sxhkd &
+fi
+
+if ! pgrep "unclutter" > /dev/null; then
+    unclutter -root &
+fi
+
+xsetroot -cursor_name left_ptr &
+feh --bg-scale --no-fehbg ~/.config/wallpaper
