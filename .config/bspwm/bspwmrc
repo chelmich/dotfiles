@@ -19,8 +19,8 @@ bspc rule -a glfw state=floating
 bspc rule -a Zathura state=tiled
 
 # appearance
-bspc config border_width         2
-bspc config window_gap          12
+bspc config border_width    4
+bspc config window_gap      8
 
 # autostart
 if ! pgrep "sxhkd" > /dev/null; then
@@ -30,6 +30,8 @@ fi
 if ! pgrep "unclutter" > /dev/null; then
     unclutter -root &
 fi
+
+~/.config/polybar/launch.sh &
 
 xsetroot -cursor_name left_ptr &
 feh --bg-scale --no-fehbg ~/.config/wallpaper
