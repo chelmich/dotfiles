@@ -37,7 +37,7 @@ font-1 = "Material Design Icons:style=Regular:size=14;2"
 
 modules-left = bspwm xwindow
 modules-center = date
-modules-right = cpu memory wlan battery powermenu
+modules-right = wlan xbacklight cpu memory battery powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -91,19 +91,12 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
+format = <label>
+label = %percentage%%
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+enable-scroll = false
 
 [module/backlight-acpi]
 inherit = module/xbacklight
