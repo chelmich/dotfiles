@@ -1,0 +1,16 @@
+#
+# ~/.config/rofi/config
+#
+
+rofi.font: DejaVuSans 12
+
+rofi.width: 20
+rofi.lines: 10
+
+rofi.bw: 4
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+
+rofi.color-enabled: true
+rofi.color-window: #000000, #b0b0b0
+rofi.color-normal: #000000, #e0e0e0, #000000, #e0e0e0, #000000
