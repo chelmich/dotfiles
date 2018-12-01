@@ -34,6 +34,7 @@ module-margin = 1
 
 font-0 = "DejaVuSans:size=12;2"
 font-1 = "Material Design Icons:style=Regular:size=14;2"
+font-2 = "Font Awesome 5 Free:style=Solid:sizw=14;2"
 
 modules-left = bspwm xwindow
 modules-center = date
@@ -93,20 +94,16 @@ type = internal/xbacklight
 
 format = <label>
 label = %percentage%%
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
 enable-scroll = false
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
+format-prefix-font = 3
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage%%
@@ -114,7 +111,8 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
+format-prefix-font = 3
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -242,9 +240,11 @@ format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
 [module/temperature]
