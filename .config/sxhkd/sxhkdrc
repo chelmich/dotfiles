@@ -30,6 +30,18 @@ super + F6
 super + F7
     xbacklight -inc 10 -steps 1
 
+# toggle mute
+super + F8
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# decrease volume
+super + F9
+    pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+# increase volume
+super + F10
+    pactl set-sink-volume @DEFAULT_SINK@ +2%
+
 #
 # bspwm hotkeys
 #
