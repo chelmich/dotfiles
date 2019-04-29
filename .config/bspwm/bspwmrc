@@ -16,7 +16,9 @@ bspc monitor -d 1 2 3 4 5
 # rules
 bspc rule -a feh state=floating
 bspc rule -a glfw state=floating
+bspc rule -a Nm-connection-editor state=floating
 bspc rule -a Zathura state=tiled
+bspc rule -a Emacs state=tiled
 
 # appearance
 bspc config border_width    4
@@ -39,4 +41,5 @@ fi
 ~/.config/polybar/launch.sh &
 
 xsetroot -cursor_name left_ptr &
+setxkbmap -option caps:super
 feh --bg-scale --no-fehbg ~/.config/wallpaper
