@@ -23,23 +23,23 @@ super + Escape
 #
 
 # decrease backlight
-super + F6
-    xbacklight -dec 10 -steps 1
+XF86MonBrightnessDown
+    xbacklight -dec 5 -steps 1
 
 # increase backlight
-super + F7
-    xbacklight -inc 10 -steps 1
+XF86MonBrightnessUp
+    xbacklight -inc 5 -steps 1
 
 # toggle mute
-super + F8
+XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # decrease volume
-super + F9
+XF86AudioLowerVolume
     pactl set-sink-volume @DEFAULT_SINK@ -2%
 
 # increase volume
-super + F10
+XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +2%
 
 #
@@ -94,9 +94,9 @@ super + {p,b,comma,period}
 super + {_,shift + }c
     bspc node -f {next,prev}.local
 
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-    bspc desktop -f {prev,next}.local
+# focus/move node to the next/previous desktop in the current monitor
+super + {_,shift + }bracket{left,right}
+    bspc {desktop -f,node -d} {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
