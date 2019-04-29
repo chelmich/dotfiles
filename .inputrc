@@ -1,0 +1,16 @@
+#
+# ~/.inputrc
+#
+
+# vi mode
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[0 q\2
+set vi-cmd-mode-string \1\e[3 q\2
+
+# tab completion
+set show-all-if-unmodified on
+
+# colors
+set colored-stats on
+set colored-completion-prefix on
