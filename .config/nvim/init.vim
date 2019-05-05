@@ -29,6 +29,9 @@ if dein#load_state(g:dein_plugin_dir)
     call dein#add('tikhomirov/vim-glsl')
     call dein#add('bronson/vim-trailing-whitespace')
 
+    " LaTeX
+    call dein#add('lervag/vimtex')
+
     call dein#end()
     call dein#save_state()
 endif
@@ -75,6 +78,7 @@ set title
 
 " Misc.
 set hidden
+let g:vimtex_view_method='zathura'
 
 " Searches
 set hlsearch
