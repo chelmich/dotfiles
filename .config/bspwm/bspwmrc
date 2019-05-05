@@ -38,6 +38,16 @@ if ! pgrep "unclutter" > /dev/null; then
     unclutter -root &
 fi
 
+if ! pgrep "udiskie" > /dev/null; then
+    udiskie -2 &
+fi
+
+if ! pgrep "dunst" > /dev/null; then
+    dunst &
+else
+    pkill dunst && dunst &
+fi
+
 ~/.config/polybar/launch.sh &
 
 xsetroot -cursor_name left_ptr &
