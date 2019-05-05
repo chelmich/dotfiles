@@ -12,15 +12,13 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
+background = #000
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #e0e0e0
 foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+primary = #6fb3d2
+secondary = #fb0120
+alert = #be643c
 
 [bar/mybar]
 monitor = eDP1
@@ -39,6 +37,8 @@ font-2 = "Font Awesome 5 Free:style=Solid:sizw=14;2"
 modules-left = bspwm xwindow
 modules-center = date
 modules-right = wlan pulseaudio xbacklight cpu memory battery powermenu
+
+;tray-position = right
 
 [module/xwindow]
 type = internal/xwindow
@@ -65,7 +65,7 @@ label-focused-padding = 2
 label-occupied = %index%
 label-occupied-padding = 2
 
-label-urgent = %index%!
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -75,19 +75,6 @@ label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -169,7 +156,8 @@ label = %date%  %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-sink = alsa_output.platform-cht-bsw-rt5645.HiFi__hw_chtrt5650__sink
+;sink = alsa_output.platform-cht-bsw-rt5645.HiFi__hw_chtrt5650__sink
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
 
 format-volume = <label-volume>
 format-volume-prefix = " "
