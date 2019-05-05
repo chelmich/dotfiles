@@ -17,4 +17,26 @@ alias startx='startx -- -keeptty > ~/.xorg.log 2>&1'
 alias vim='nvim'
 
 # Prompt
-PS1='[\u@\h \W]\$ '
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command(){
+    local EXIT="$?" # this must be called first
+
+    if [ $(id -u) == 0 ]; then
+        local userCol='\[\e[31m\]'
+    else
+        local userCol='\[\e[36m\]'
+    fi
+
+    local dirCol='\[\e[34m\]'
+    local clearCol='\[\e[0m\]'
+    local warnCol='\[\e[31m\]'
+
+    PS1="[$userCol\u@\h $dirCol\W"
+
+    if [ $EXIT != 0 ]; then
+        PS1+="$warnCol $EXIT"
+    fi
+
+    PS1+="$clearCol]\$ "
+}
