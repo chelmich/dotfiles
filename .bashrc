@@ -2,9 +2,6 @@
 # ~/.bashrc
 #
 
-# Allow duplicating termite windows
-source /etc/profile.d/vte.sh
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -17,7 +14,7 @@ alias startx='startx -- -keeptty > ~/.xorg.log 2>&1'
 alias vim='nvim'
 
 # Prompt
-PROMPT_COMMAND=__prompt_command
+export PROMPT_COMMAND=__prompt_command
 
 __prompt_command(){
     local EXIT="$?" # this must be called first
@@ -40,3 +37,11 @@ __prompt_command(){
 
     PS1+="$clearCol]\$ "
 }
+
+# Allow duplicating termite windows (must be after prompt)
+# note: change
+#       [ -n "$BASH_VERSION" ] && PROMPT_COMMAND="__vte_prompt_command"
+# to
+#       [ -n "$BASH_VERSION" ] && PROMPT_COMMAND="${PROMPT_COMMAND};__vte_prompt_command"
+# in /etc/profile.d/vte.sh to avoid overwriting the prompt
+source /etc/profile.d/vte.sh
