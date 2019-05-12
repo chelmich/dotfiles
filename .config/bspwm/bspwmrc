@@ -11,7 +11,7 @@ bspc config gapless_monocle      true
 bspc config single_monocle       true
 
 # workspaces
-bspc monitor -d 1 2 3 4 5
+bspc monitor -d 1 2 3 4 5 6 7 8
 
 # rules
 bspc rule -a feh state=floating
@@ -46,6 +46,10 @@ if ! pgrep "dunst" > /dev/null; then
     dunst &
 else
     pkill dunst && dunst &
+fi
+
+if ! pgrep "compton" > /dev/null; then
+    compton &
 fi
 
 ~/.config/polybar/launch.sh &
