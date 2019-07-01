@@ -52,6 +52,11 @@ if ! pgrep "compton" > /dev/null; then
     compton &
 fi
 
+xset s 300 5
+if ! pgrep "xx-lock" > /dev/null; then
+    xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
+fi
+
 ~/.config/polybar/launch.sh &
 
 xsetroot -cursor_name left_ptr &

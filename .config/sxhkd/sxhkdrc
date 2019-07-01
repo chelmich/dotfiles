@@ -12,7 +12,12 @@ super + Return
 
 # program launcher
 super + @space
-    rofi -show run
+    # note: requires some patches (dmenu2 from AUR)
+    dmenu_run -fn DejaVuSans-12 -h 28 -nb "#000000" -nf "#e0e0e0" -sb "#000000" -sf "#6fb3d2" -q -dim 0.5
+
+# lock the screeen
+super + ctrl + l
+    xset s activate
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -41,6 +46,10 @@ XF86AudioLowerVolume
 # increase volume
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +2%
+
+# take a screenshot
+Print
+    maim -s ~/Pictures/Screenshots/$(date +%s).png
 
 #
 # bspwm hotkeys
