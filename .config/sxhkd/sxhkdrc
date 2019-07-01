@@ -11,8 +11,8 @@ super + Return
     termite
 
 # program launcher
+# note: requires some patches (dmenu2 from AUR)
 super + @space
-    # note: requires some patches (dmenu2 from AUR)
     dmenu_run -fn DejaVuSans-12 -h 28 -nb "#000000" -nf "#e0e0e0" -sb "#000000" -sf "#6fb3d2" -q -dim 0.5
 
 # lock the screeen
