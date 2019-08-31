@@ -250,6 +250,8 @@
   :config
   (add-to-list 'company-backends 'company-glsl))
 
+(use-package haskell-mode)
+
 ;; Everything completion
 (use-package ivy
   :demand
