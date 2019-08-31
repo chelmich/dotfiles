@@ -8,4 +8,6 @@
     editor = nvim
 
 [alias]
+    ds = diff --staged
     lg = log "--pretty=format:'%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%aN %C(auto,reset)%s%C(auto,red)% gD% D' --date=relative"
+    lgg = log "--graph --pretty=format:'%C(auto,yellow)%h %C(auto,green)%aN %C(auto,reset)%s%C(auto,red)% gD% D'"
