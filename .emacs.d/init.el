@@ -13,7 +13,7 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
 (blink-cursor-mode t)
-(setq blink-cursor-blinks 0) ;; blink forever
+(setq blink-cursor-blinks 0) ;; Blink forever
 
 ;; Font
 (set-frame-font "Hack-12")
@@ -44,7 +44,7 @@
 (setq use-package-always-ensure t)
 
 ;; Line numbers
-(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Paren settings
 (use-package paren
@@ -65,21 +65,25 @@
 
 ;;(global-prettify-symbols-mode)
 
-;;(setq-default show-trailing-whitespace t)
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
+(setq vc-follow-symlinks t)
+
+;; Disable emacs VC (I have git for that)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
 ;; Remove minor mode clutter
 (use-package diminish
-  :after (undo-tree eldoc abbrev page-break-lines)
+  :after (undo-tree eldoc abbrev page-break-lines autorevert)
   :config
   (diminish 'eldoc-mode)
   (diminish 'undo-tree-mode)
   (diminish 'abbrev-mode)
+  (diminish 'auto-revert-mode)
   (diminish 'page-break-lines-mode))
 
-;; Document keys
+;; Document key bindings
 (use-package which-key
   :disabled
   :diminish
@@ -111,7 +115,7 @@
   (evil-goggles-mode)
   (evil-goggles-use-diff-faces))
 
-;; Compile keybinds
+;; Build keybinds
 (global-set-key (kbd "C-x m") (lambda () (interactive)(recompile nil)(other-window 1)))
 (global-set-key (kbd "C-x M") (lambda () (interactive)(command-execute 'compile)(other-window 1)))
 
@@ -229,6 +233,7 @@
   ((c++-mode c-mode) . irony-mode)
   ((irony-mode-hook) . irony-cdb-autosetup-compile-options))
 
+;; Indentation
 (setq-default indent-tabs-mode nil)
 
 ;;
@@ -251,6 +256,12 @@
   (add-to-list 'company-backends 'company-glsl))
 
 (use-package haskell-mode)
+
+(use-package rust-mode)
+(use-package flycheck-rust
+  :after (rust-mode flycheck)
+  :hook
+  (flycheck-mode . flycheck-rust-setup))
 
 ;; Everything completion
 (use-package ivy
@@ -333,9 +344,16 @@
 ;; Git integration
 (use-package magit
   :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (global-set-key (kbd "C-x l") 'magit-log-current))
 
 (use-package evil-magit
   :requires (magit evil))
+
+(use-package diff-hl
+  :config
+  (diff-hl-margin-mode)
+  (diff-hl-flydiff-mode)
+  (global-diff-hl-mode))
 
 ;;; init.el ends here
