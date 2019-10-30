@@ -53,12 +53,12 @@ if ! pgrep "compton" > /dev/null; then
 fi
 
 xset s 300 5
-if ! pgrep "xx-lock" > /dev/null; then
-    xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
+if ! pgrep "xss-lock" > /dev/null; then
+    xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -l -- betterlockscreen -l blur &
 fi
 
 ~/.config/polybar/launch.sh &
 
 xsetroot -cursor_name left_ptr &
 setxkbmap -option caps:super
-feh --bg-scale --no-fehbg ~/.config/wallpaper
+feh --bg-fill --no-fehbg ~/.config/wallpaper
