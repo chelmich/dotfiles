@@ -39,8 +39,8 @@ __prompt_command(){
 # Append prompt to the one provided by vte
 if [ "$TERM" = "xterm-termite" ]; then
     source /etc/profile.d/vte.sh
-    export PROMPT_COMMAND="${PROMPT_COMMAND};__prompt_command"
+    PROMPT_COMMAND="${PROMPT_COMMAND};__prompt_command"
     TERM="xterm-color"
 else
-    export PROMPT_COMMAND=__prompt_command
+    PROMPT_COMMAND=__prompt_command
 fi
