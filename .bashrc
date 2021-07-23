@@ -34,6 +34,9 @@ __prompt_command(){
     fi
 
     PS1+="$clearCol]\$ "
+
+    # update terminal title
+    printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/$HOME/\~}"
 }
 
 # Append prompt to the one provided by vte
