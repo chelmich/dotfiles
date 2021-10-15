@@ -1,0 +1,92 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "security.workspace.trust.enabled": false,
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "update.mode": "manual",
+    "json.schemaDownload.enable": false,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "extensions.autoCheckUpdates": false,
+    "extensions.ignoreRecommendations": true,
+    "npm.fetchOnlinePackageInfo": false,
+
+    "window.titleBarStyle": "custom",
+    "breadcrumbs.enabled": false,
+    "debug.toolBarLocation": "docked",
+    "scm.countBadge": "off",
+
+    "editor.minimap.enabled": false,
+    "editor.lightbulb.enabled": false,
+    "editor.cursorStyle": "line",
+    "editor.renderIndentGuides": false,
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+
+    "vim.camelCaseMotion.enable": true,
+    "vim.hlsearch": true,
+
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Spacemacs - light",
+    "workbench.iconTheme": "vs-minimal",
+    "workbench.colorCustomizations": {
+        "[Spacemacs - light]": {
+            "focusBorder": "#9380b2",
+            "contrastBorder": "#0000",
+
+            "tab.border": "#0000",
+            "editorGroupHeader.tabsBackground": "#efeae9",
+
+            "titleBar.activeBackground": "#e7e5eb",
+            "titleBar.activeForeground": "#655370",
+            "titleBar.border": "#b3b9be",
+
+            "activityBar.background": "#e3dedd",
+            "activityBarBadge.foreground": "#ecf3ec",
+            "activityBarBadge.background": "#2aa1ae",
+
+            "list.inactiveSelectionBackground": "#e3dedd",
+            "list.hoverBackground": "#e3dedd",
+
+            "sideBar.background": "#efeae9",
+
+            "statusBar.border": "#b3b9be",
+
+            "statusBarItem.activeBackground": "#d3d3e7",
+            "statusBarItem.hoverBackground": "#d3d3e7",
+            "statusBarItem.prominentBackground": "#ddd8eb",
+            "statusBarItem.prominentForeground": "#9380b2",
+            "statusBarItem.remoteBackground": "#ddd8eb",
+            "statusBarItem.remoteForeground": "#9380b2",
+
+            "terminal.foreground": "#292b2e",
+            "terminal.ansiBlack": "#4e3163",
+            "terminal.ansiBrightBlack": "#8c799f",
+            "terminal.ansiBlue": "#3a81c3",
+            "terminal.ansiBrightBlue": "#4f97d7",
+            "terminal.ansiCyan": "#2aa1ae",
+            "terminal.ansiBrightCyan": "#21b8c7",
+            "terminal.ansiGreen": "#42ae2c",
+            "terminal.ansiBrightGreen": "#67b11d",
+            "terminal.ansiMagenta": "#ba2f59",
+            "terminal.ansiBrightMagenta": "#715ab1",
+            "terminal.ansiRed": "#e0211d",
+            "terminal.ansiBrightRed": "#dc752f",
+            "terminal.ansiWhite": "#efeae9",
+            "terminal.ansiBrightWhite": "#e3dedd",
+        }
+    },
+
+    "git.enableStatusBarSync": false,
+    "git-graph.tabIconColourTheme": "grey",
+    "git-graph.repository.showTags": false,
+    "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
+    "editor.fontFamily": "'SourceCodePro', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.cursorSurroundingLines": 4,
+    "editor.fontSize": 15,
+    "C_Cpp.default.cppStandard": "c++20",
+    "editor.suggest.showSnippets": false,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.preview.scrollPreviewWithEditor": false,
+}
