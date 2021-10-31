@@ -73,15 +73,19 @@
 
 (setq vc-follow-symlinks t)
 
+;; Revert to reflect changed files
+(use-package autorevert
+  :diminish auto-revert-mode
+  :config
+  (global-auto-revert-mode))
+
 ;; Remove minor mode clutter
 (use-package diminish
-  :after (undo-tree eldoc abbrev page-break-lines autorevert)
   :config
-  (diminish 'eldoc-mode)
-  (diminish 'undo-tree-mode)
-  (diminish 'abbrev-mode)
-  (diminish 'auto-revert-mode)
-  (diminish 'page-break-lines-mode))
+  (diminish 'abbrev-mode))
+
+(use-package eldoc
+  :diminish eldoc-mode)
 
 ;; Enable external clipboard
 (setq select-enable-clipboard t)
@@ -111,6 +115,14 @@
 ;; Build keybinds
 (global-set-key (kbd "C-x m") (lambda () (interactive)(recompile nil)(other-window 1)))
 (global-set-key (kbd "C-x M") (lambda () (interactive)(command-execute 'compile)(other-window 1)))
+
+;; Undo history management
+(use-package undo-tree
+  :after evil
+  :diminish
+  :config
+  (evil-set-undo-system 'undo-tree)
+  (global-undo-tree-mode 1))
 
 ;; Project management
 (use-package projectile
