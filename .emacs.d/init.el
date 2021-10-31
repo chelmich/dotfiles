@@ -1,8 +1,5 @@
 ;;; init.el --- Emacs configuration
 
-;;; Commentary:
-;;; Should eventaully split into multiple files
-
 ;;; Code:
 
 ;; Hide GUI elements
@@ -22,6 +19,7 @@
 ;; Package management
 ;;
 
+;; Initialize package system
 (require 'package)
 
 ;; Disable loading some packages
@@ -57,9 +55,9 @@
 (use-package elec-pair
   :config
   (setq electric-pair-pairs '((?\{ . ?\})
-			      (?\( . ?\))
-			      (?\[ . ?\])
-			      (?\" . ?\")))
+                              (?\( . ?\))
+                              (?\[ . ?\])
+                              (?\" . ?\")))
   :hook
   (prog-mode . electric-pair-local-mode))
 
@@ -69,7 +67,7 @@
 
 (setq vc-follow-symlinks t)
 
-;; Disable emacs VC (I have git for that)
+;; Disable automatic backup files
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
@@ -97,7 +95,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-;; Vim keybindings (evil)
+;; Vim bindings
 (use-package evil
   :init
   (evil-mode 1))
@@ -165,7 +163,7 @@
 ;; Autoselect help window
 (setq help-window-select t)
 
-;; Highlight line
+;; Highlight the current line
 (use-package hl-line
   :preface
   (defvar-local was-hl-line-mode-on nil)
@@ -184,7 +182,7 @@
   (when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
 
   (add-hook 'hl-line-mode-hook
-	    (lambda () (if hl-line-mode (setq was-hl-line-mode-on t))))
+            (lambda () (if hl-line-mode (setq was-hl-line-mode-on t))))
 
   (add-hook 'evil-visual-state-entry-hook 'hl-line-off-maybe)
   (add-hook 'evil-visual-state-exit-hook 'hl-line-on-maybe))
@@ -273,14 +271,14 @@
   (projectile-completion-system 'ivy)
   (enable-recursive-minibuffers t)
   (ivy-wrap t)
-  (ivy-on-del-error-function nil)
+  (ivy-on-del-error-function 'ignore)
   (ivy-initial-inputs-alist nil)
   (ivy-virtual-abbreviate 'full)
   (ivy-count-format "(%d/%d) ")
   (ivy-format-function #'ivy-format-function-line)
   :bind (("C-x B" . ivy-switch-buffer-other-window)
-	 :map ivy-minibuffer-map
-	 ([escape] . minibuffer-keyboard-quit))
+         :map ivy-minibuffer-map
+         ([escape] . minibuffer-keyboard-quit))
   :config
   (ivy-mode t))
 
