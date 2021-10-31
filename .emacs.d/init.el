@@ -37,8 +37,24 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+;; Disable annoying bell
+(setq ring-bell-function 'ignore)
+
+;; Autoselect help window
+(setq help-window-select t)
+
 ;; Line numbers
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;; Show trailing whitespace
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+
+;; Indentation
+(setq-default indent-tabs-mode nil)
+
+;; Scroll settings
+(setq scroll-margin 8
+      scroll-step 8)
 
 ;; Highlight matching parens
 (use-package paren
@@ -56,8 +72,6 @@
                               (?\" . ?\")))
   :hook
   (prog-mode . electric-pair-local-mode))
-
-(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
 ;; Disable automatic backup files
 (setq make-backup-files nil)
@@ -139,9 +153,6 @@
   :config
   (load-theme 'spacemacs-light t))
 
-;; Autoselect help window
-(setq help-window-select t)
-
 ;; Highlight the current line
 (use-package hl-line
   :preface
@@ -165,10 +176,6 @@
 
   (add-hook 'evil-visual-state-entry-hook 'hl-line-off-maybe)
   (add-hook 'evil-visual-state-exit-hook 'hl-line-on-maybe))
-
-;; Scroll settings
-(setq scroll-margin 8
-      scroll-step 8)
 
 ;; Modeline
 (use-package spaceline
@@ -209,9 +216,6 @@
   :hook
   ((c++-mode c-mode) . irony-mode)
   ((irony-mode-hook) . irony-cdb-autosetup-compile-options))
-
-;; Indentation
-(setq-default indent-tabs-mode nil)
 
 ;;
 ;; Languages
