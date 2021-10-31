@@ -25,10 +25,7 @@
 ;; Disable loading some packages
 (add-to-list 'package-load-list '(treemacs nil))
 (add-to-list 'package-load-list '(which-key nil))
-(add-to-list 'package-load-list '(doom-themes nil))
-(add-to-list 'package-load-list '(base16-theme nil))
 
-;;(setq package-enable-at-startup nil)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
@@ -37,14 +34,13 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-;; Always download packages
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
 ;; Line numbers
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; Paren settings
+;; Highlight matching parens
 (use-package paren
   :custom
   (show-paren-delay 0)
@@ -61,15 +57,13 @@
   :hook
   (prog-mode . electric-pair-local-mode))
 
-;;(global-prettify-symbols-mode)
-
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
-
-(setq vc-follow-symlinks t)
 
 ;; Disable automatic backup files
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+
+(setq vc-follow-symlinks t)
 
 ;; Remove minor mode clutter
 (use-package diminish
@@ -144,21 +138,6 @@
   (spacemacs-theme-comment-bg nil)
   :config
   (load-theme 'spacemacs-light t))
-
-(use-package base16-theme
-  :disabled
-  :config
-  (load-theme 'base16-bright t))
-
-(use-package doom-themes
-  :disabled
-  :custom
-  (doom-themes-enable-bold t)
-  (doom-themes-enable-italic t)
-  :config
-  ;;(load-theme 'doom-tomorrow-night t)
-  (doom-themes-treemacs-config)
-  (doom-themes-org-config))
 
 ;; Autoselect help window
 (setq help-window-select t)
