@@ -15,17 +15,8 @@
 ;; Font
 (set-frame-font "Hack-12")
 
-;;
-;; Package management
-;;
-
 ;; Initialize package system
 (require 'package)
-
-;; Disable loading some packages
-(add-to-list 'package-load-list '(treemacs nil))
-(add-to-list 'package-load-list '(which-key nil))
-
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
@@ -88,13 +79,6 @@
   (diminish 'abbrev-mode)
   (diminish 'auto-revert-mode)
   (diminish 'page-break-lines-mode))
-
-;; Document key bindings
-(use-package which-key
-  :disabled
-  :diminish
-  :init
-  (which-key-mode))
 
 ;; Enable external clipboard
 (setq select-enable-clipboard t)
@@ -279,20 +263,6 @@
   (ivy-rich-mode 1)
   (ivy-set-display-transformer 'ivy-switch-buffer-other-window
 			       'ivy-rich--ivy-switch-buffer-transformer))
-
-;; File tree
-;; TODO: fix width adjustment after opening
-(use-package treemacs
-  :disabled
-  :custom
-  (treemacs-width 20)
-  :bind ("C-x t" . treemacs-select-window))
-
-(use-package treemacs-projectile
-  :requires (treemacs projectile))
-
-(use-package treemacs-evil
-  :requires (treemacs evil))
 
 ;; Syntax checking
 (use-package flycheck
