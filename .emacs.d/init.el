@@ -44,8 +44,11 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Scroll settings
-(setq scroll-margin 8
-      scroll-step 8)
+(setq scroll-margin 8)
+(setq scroll-step 8)
+(setq mouse-wheel-progressive-speed nil)
+(setq scroll-preserve-screen-position t)
+(setq scroll-error-top-bottom t)
 
 ;; Highlight matching parens
 (use-package paren
