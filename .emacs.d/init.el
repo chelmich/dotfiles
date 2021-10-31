@@ -5,15 +5,9 @@
 ;; Hide GUI elements
 (setq inhibit-startup-message t)
 (when window-system
-  (tooltip-mode -1)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
-(blink-cursor-mode t)
-(setq blink-cursor-blinks 0) ;; Blink forever
-
-;; Font
-(set-frame-font "Hack-12")
 
 ;; Initialize package system
 (require 'package)
@@ -30,6 +24,10 @@
 
 ;; Disable annoying bell
 (setq ring-bell-function 'ignore)
+
+;; Blink the cursor forever
+(blink-cursor-mode t)
+(setq blink-cursor-blinks 0)
 
 ;; Autoselect help window
 (setq help-window-select t)
@@ -94,6 +92,11 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+;; Recent files
+(use-package recentf
+  :config
+  (add-to-list 'recentf-exclude "/elpa"))
+
 ;; Vim bindings
 (use-package evil
   :init
@@ -113,8 +116,10 @@
   (evil-goggles-use-diff-faces))
 
 ;; Build keybinds
-(global-set-key (kbd "C-x m") (lambda () (interactive)(recompile nil)(other-window 1)))
-(global-set-key (kbd "C-x M") (lambda () (interactive)(command-execute 'compile)(other-window 1)))
+(global-set-key (kbd "C-x m")
+                (lambda () (interactive)(recompile nil)(other-window 1)))
+(global-set-key (kbd "C-x M")
+                (lambda () (interactive)(command-execute 'compile)(other-window 1)))
 
 ;; Undo history management
 (use-package undo-tree
