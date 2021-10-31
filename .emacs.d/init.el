@@ -115,20 +115,25 @@
 ;; Project management
 (use-package projectile
   :diminish
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
   :config
   (projectile-mode t))
+
+;; Show lines instead of ^L
+(use-package page-break-lines
+  :diminish)
 
 ;; Dashboard
 (use-package dashboard
   :custom
   (dashboard-show-shortcuts nil)
-  (dashboard-banner-logo-title "Welcome to Emacs!")
   (dashboard-center-content t)
   (dashboard-set-init-info t)
   (dashboard-set-footer nil)
   (dashboard-items '((recents . 10)
-		     (projects . 5)
-		     (bookmarks . 5)))
+                     (projects . 5)
+                     (bookmarks . 5)))
   :config
   (dashboard-setup-startup-hook))
 
@@ -137,6 +142,10 @@
   :ensure spacemacs-theme
   :custom
   (spacemacs-theme-comment-bg nil)
+  (spacemacs-theme-underline-parens nil)
+  :custom-face
+  (ivy-highlight-face ((t (:inherit bold))))
+  (ivy-minibuffer-match-face-1 ((t (:inherit nil))))
   :config
   (load-theme 'spacemacs-light t))
 
@@ -236,15 +245,11 @@
   :demand
   :diminish
   :custom
-  (ivy-height 15)
-  (ivy-fixed-height-minibuffer t)
-  (projectile-completion-system 'ivy)
-  (enable-recursive-minibuffers t)
   (ivy-wrap t)
   (ivy-on-del-error-function 'ignore)
   (ivy-initial-inputs-alist nil)
   (ivy-virtual-abbreviate 'full)
-  (ivy-count-format "(%d/%d) ")
+  (ivy-count-format "%d/%d ")
   (ivy-format-function #'ivy-format-function-line)
   :bind (("C-x B" . ivy-switch-buffer-other-window)
          :map ivy-minibuffer-map
