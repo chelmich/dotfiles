@@ -323,9 +323,6 @@
   (global-set-key (kbd "C-x g") 'magit-status)
   (global-set-key (kbd "C-x l") 'magit-log-current))
 
-(use-package evil-magit
-  :requires (magit evil))
-
 (use-package diff-hl
   :config
   (global-diff-hl-mode))
