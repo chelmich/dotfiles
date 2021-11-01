@@ -139,7 +139,9 @@
 
 ;; Show lines instead of ^L
 (use-package page-break-lines
-  :diminish)
+  :diminish
+  :config
+  (global-page-break-lines-mode))
 
 ;; Dashboard
 (use-package dashboard
@@ -201,16 +203,28 @@
   :custom
   (company-idle-delay 0)
   (company-minimum-prefix-length 3)
-  (company-backends '(company-dabbrev-code))
+  (company-backends '(company-dabbrev-code
+                      company-elisp))
   :bind (:map company-active-map
-	      ("M-n" . nil)
-	      ("M-p" . nil)
-	      ("C-n" . company-select-next)
-	      ("C-p" . company-select-previous))
+              ("M-n" . nil)
+              ("M-p" . nil)
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous))
   :hook
-  ((c-mode c++-mode glsl-mode) . company-mode))
+  ((c-mode c++-mode) . company-mode)
+  (glsl-mode . company-mode)
+  (emacs-lisp-mode . company-mode))
 
-;; Editor completion C backends
+;;
+;; Languages
+;;
+
+;; C/C++
+(use-package cc-mode
+  :config
+  (advice-add 'c-update-modeline :around #'ignore))
+
+;; C/C++ completion backends
 (use-package company-c-headers
   :after company
   :config
@@ -228,27 +242,17 @@
   ((c++-mode c-mode) . irony-mode)
   ((irony-mode-hook) . irony-cdb-autosetup-compile-options))
 
-;;
-;; Languages
-;;
-
-(use-package cc-mode
-  :custom
-  (c-default-style "linux")
-  (c-basic-offset 4)
-  :config
-  (add-hook 'c-mode-common-hook (lambda () (setq tab-width 4)))
-  (advice-add 'c-update-modeline :around #'ignore))
-
+;; GLSL
 (use-package glsl-mode)
-
 (use-package company-glsl
   :after (company glsl-mode)
   :config
   (add-to-list 'company-backends 'company-glsl))
 
+;; Haskell
 (use-package haskell-mode)
 
+;; Rust
 (use-package rust-mode)
 (use-package flycheck-rust
   :after (rust-mode flycheck)
