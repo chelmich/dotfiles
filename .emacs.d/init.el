@@ -165,6 +165,9 @@
   :custom-face
   (ivy-highlight-face ((t (:inherit bold))))
   (ivy-minibuffer-match-face-1 ((t (:inherit nil))))
+  (diff-hl-change ((t (:background "#d1dcdf"))))
+  (diff-hl-delete ((t (:background "#eed9d2"))))
+  (diff-hl-insert ((t (:background "#dae6d0"))))
   :config
   (load-theme 'spacemacs-light t))
 
@@ -193,9 +196,9 @@
   (add-hook 'evil-visual-state-exit-hook 'hl-line-on-maybe))
 
 ;; Modeline
-(line-number-mode 0)
-(column-number-mode 1)
-(size-indication-mode 1)
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
 
 ;; Editor autocompletion
 (use-package company
@@ -325,8 +328,6 @@
 
 (use-package diff-hl
   :config
-  (diff-hl-margin-mode)
-  (diff-hl-flydiff-mode)
   (global-diff-hl-mode))
 
 ;;; init.el ends here
