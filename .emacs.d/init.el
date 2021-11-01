@@ -278,14 +278,9 @@
   :config
   (counsel-mode t))
 
-(use-package ivy-rich
-  :after (ivy counsel)
-  :custom
-  (ivy-rich-path-style 'abbrev)
-  :config
-  (ivy-rich-mode 1)
-  (ivy-set-display-transformer 'ivy-switch-buffer-other-window
-			       'ivy-rich--ivy-switch-buffer-transformer))
+(use-package swiper
+  :after ivy
+  :bind ("C-s" . swiper))
 
 ;; Syntax checking
 (use-package flycheck
