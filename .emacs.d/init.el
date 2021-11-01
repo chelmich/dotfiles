@@ -191,11 +191,9 @@
   (add-hook 'evil-visual-state-exit-hook 'hl-line-on-maybe))
 
 ;; Modeline
-(use-package spaceline
-  :custom
-  (spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  :init
-  (spaceline-spacemacs-theme))
+(line-number-mode 0)
+(column-number-mode 1)
+(size-indication-mode 1)
 
 ;; Editor autocompletion
 (use-package company
