@@ -281,6 +281,7 @@
   (ivy-count-format "%d/%d ")
   (ivy-format-function #'ivy-format-function-line)
   :bind (("C-x B" . ivy-switch-buffer-other-window)
+         ("C-c C-r" . ivy-resume)
          :map ivy-minibuffer-map
          ([escape] . minibuffer-keyboard-quit))
   :config
@@ -321,6 +322,7 @@
 ;; Spell checking
 ;; Note: aspell and aspell-en packages must be installed
 (use-package flyspell
+  :if (eq system-type 'gnu/linux)
   :custom
   (ispell-program-name (executable-find "aspell"))
   (ispell-list-command "--list"))
