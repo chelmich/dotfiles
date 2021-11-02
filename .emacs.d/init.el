@@ -100,7 +100,12 @@
 ;; Vim bindings
 (use-package evil
   :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
   (evil-mode 1))
+
+(use-package evil-collection
+  :after evil)
 
 (use-package evil-commentary
   :diminish
@@ -287,6 +292,7 @@
   :config
   (counsel-mode t))
 
+;; Incremental search using ivy
 (use-package swiper
   :after ivy
   :bind ("C-s" . swiper))
@@ -321,10 +327,13 @@
 
 ;; Git integration
 (use-package magit
+  :after (evil evil-collection)
+  :bind (("C-x g" . magit-status)
+         ("C-x l" . magit-log-current))
   :config
-  (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-x l") 'magit-log-current))
+  (evil-collection-magit-setup))
 
+;; Preview VC diffs in the fringe
 (use-package diff-hl
   :config
   (global-diff-hl-mode))
