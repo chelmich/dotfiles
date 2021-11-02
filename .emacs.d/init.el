@@ -233,17 +233,19 @@
   :config
   (add-to-list 'company-backends 'company-c-headers))
 
-(use-package company-irony
-  :after (company irony)
-  :config
-  (add-to-list 'company-backends 'company-irony))
+;; Only use irony on Linux
+(when (eq system-type 'gnu/linux)
+  (use-package company-irony
+    :after (company irony)
+    :config
+    (add-to-list 'company-backends 'company-irony))
 
-(use-package irony
-  :diminish
-  :demand
-  :hook
-  ((c++-mode c-mode) . irony-mode)
-  ((irony-mode-hook) . irony-cdb-autosetup-compile-options))
+  (use-package irony
+    :diminish
+    :demand
+    :hook
+    ((c++-mode c-mode) . irony-mode)
+    ((irony-mode-hook) . irony-cdb-autosetup-compile-options)))
 
 ;; GLSL
 (use-package glsl-mode)
