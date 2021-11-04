@@ -213,11 +213,13 @@
   (company-minimum-prefix-length 3)
   (company-backends '(company-dabbrev-code
                       company-elisp))
+  (company-selection-wrap-around t)
   :bind (:map company-active-map
               ("M-n" . nil)
               ("M-p" . nil)
               ("C-n" . company-select-next)
-              ("C-p" . company-select-previous))
+              ("C-p" . company-select-previous)
+              ("C-s" . counsel-company))
   :hook
   ((c-mode c++-mode) . company-mode)
   (glsl-mode . company-mode)
@@ -265,9 +267,7 @@
 ;; Rust
 (use-package rust-mode)
 (use-package flycheck-rust
-  :after (rust-mode flycheck)
-  :hook
-  (flycheck-mode . flycheck-rust-setup))
+  :after (rust-mode flycheck))
 
 ;; Everything completion
 (use-package ivy
@@ -305,7 +305,7 @@
   :config
   ;; Don't recheck after a newline
   (setq flycheck-check-syntax-automatically
-	(delq 'new-line flycheck-check-syntax-automatically))
+        (delq 'new-line flycheck-check-syntax-automatically))
 
   (defun evil-flycheck-handle-evil-normal-state-entry ()
     "Handle switching to normal state in evil."
@@ -313,11 +313,7 @@
 
   (add-to-list 'flycheck-check-syntax-automatically 'evil-normal-state)
   (add-to-list 'flycheck-hooks-alist
-	       '(evil-normal-state-entry-hook . evil-flycheck-handle-evil-normal-state-entry))
-  ;; Use C++ 17 standard
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
-  :hook
-  (prog-mode . flycheck-mode))
+               '(evil-normal-state-entry-hook . evil-flycheck-handle-evil-normal-state-entry)))
 
 ;; Spell checking
 ;; Note: aspell and aspell-en packages must be installed
@@ -336,6 +332,7 @@
   (evil-collection-magit-setup))
 
 ;; Preview VC diffs in the fringe
+;; FIXME: diff doesn't refresh after commit
 (use-package diff-hl
   :config
   (global-diff-hl-mode))
