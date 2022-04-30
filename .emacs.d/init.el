@@ -233,7 +233,14 @@
 
 ;; C/C++
 (use-package cc-mode
+  :custom
+  (c-default-style "personal")
   :config
+  (c-add-style "personal"
+               '("java"
+                 (c-basic-offset . 4)
+                 (c-offsets-alist
+                  (access-label . -))))
   (advice-add 'c-update-modeline :around #'ignore))
 
 ;; C/C++ completion backends
