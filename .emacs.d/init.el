@@ -130,6 +130,8 @@
 (use-package undo-tree
   :after evil
   :diminish
+  :custom
+  (undo-tree-auto-save-history nil)
   :config
   (evil-set-undo-system 'undo-tree)
   (global-undo-tree-mode 1))
