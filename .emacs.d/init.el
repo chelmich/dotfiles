@@ -44,6 +44,7 @@
 ;; Scroll settings
 (setq scroll-margin 8)
 (setq scroll-step 8)
+(setq mouse-wheel-scroll-amount '(3))
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-preserve-screen-position t)
 (setq scroll-error-top-bottom t)
@@ -87,6 +88,10 @@
 
 ;; Enable external clipboard
 (setq select-enable-clipboard t)
+
+;; Set the font
+(when (eq system-type 'windows-nt)
+  (set-frame-font "Consolas-11" nil t))
 
 ;; Keep custom settings in their own file
 (setq custom-file "~/.emacs.d/custom.el")
