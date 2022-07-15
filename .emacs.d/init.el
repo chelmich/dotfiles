@@ -121,9 +121,11 @@
 (use-package evil-goggles
   :diminish
   :requires evil
+  :custom
+  (evil-goggles-pulse nil)
+  (evil-goggles-duration 0.15)
   :config
-  (evil-goggles-mode)
-  (evil-goggles-use-diff-faces))
+  (evil-goggles-mode))
 
 ;; Build keybinds
 (global-set-key (kbd "C-x m")
@@ -180,6 +182,9 @@
   (diff-hl-change ((t (:background "#d1dcdf"))))
   (diff-hl-delete ((t (:background "#eed9d2"))))
   (diff-hl-insert ((t (:background "#dae6d0"))))
+  (evil-goggles-yank-face ((t (:background "#f6f1e1" :foreground "#b1951d"))))
+  (evil-goggles-indent-face ((t (:background "#d1dcdf" :foreground "#3a81c3"))))
+  (evil-goggles-join-face ((t (:background "#d1dcdf" :foreground "#3a81c3"))))
   :config
   (load-theme 'spacemacs-light t))
 
