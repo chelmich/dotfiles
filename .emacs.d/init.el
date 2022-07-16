@@ -12,7 +12,7 @@
 ;; Initialize package system
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 ;; Bootstrap use-package
@@ -31,6 +31,9 @@
 
 ;; Autoselect help window
 (setq help-window-select t)
+
+;; Immediately provide feedback for partial commands
+(setq echo-keystrokes 0.05)
 
 ;; Line numbers
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -113,14 +116,14 @@
   :after evil)
 
 (use-package evil-commentary
+  :after evil
   :diminish
-  :requires evil
   :config
   (evil-commentary-mode))
 
 (use-package evil-goggles
+  :after evil
   :diminish
-  :requires evil
   :custom
   (evil-goggles-pulse nil)
   (evil-goggles-duration 0.15)
