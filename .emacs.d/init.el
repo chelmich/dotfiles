@@ -140,6 +140,10 @@
 (global-set-key (kbd "C-x M")
                 (lambda () (interactive)(command-execute 'compile)(other-window 1)))
 
+;; Better kill-buffer keybinds
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
+(global-set-key (kbd "C-x K") 'kill-buffer)
+
 ;; Undo history management
 (use-package undo-tree
   :after evil
@@ -278,7 +282,7 @@
     :demand
     :hook
     ((c++-mode c-mode) . irony-mode)
-    ((irony-mode-hook) . irony-cdb-autosetup-compile-options)))
+    (irony-mode . irony-cdb-autosetup-compile-options)))
 
 ;; GLSL
 (use-package glsl-mode)
@@ -356,7 +360,7 @@
 
 ;; Git integration
 (use-package magit
-  :after (evil evil-collection)
+  :after evil-collection
   :bind (("C-x g" . magit-status)
          ("C-x l" . magit-log-current))
   :config
