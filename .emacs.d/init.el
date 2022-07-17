@@ -178,6 +178,11 @@
   (dashboard-items '((recents . 10)
                      (projects . 5)
                      (bookmarks . 5)))
+  :custom-face
+  (dashboard-banner-logo-title ((t (:inherit bold))))
+  (dashboard-heading ((t (:inherit (bold font-lock-keyword-face)))))
+  (dashboard-items-face ((t (:inherit unspecified))))
+  (dashboard-no-items-face ((t (:inherit shadow))))
   :config
   (dashboard-setup-startup-hook))
 
