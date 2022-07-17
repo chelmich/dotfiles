@@ -9,6 +9,10 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
 
+;; Simplify frame title
+(setq frame-title-format '("%b - Emacs")
+      icon-title-format frame-title-format)
+
 ;; Initialize package system
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -291,6 +295,11 @@
 (use-package flycheck-rust
   :after (rust-mode flycheck))
 
+;; CMake
+(use-package cmake-mode
+  :custom
+  (cmake-tab-width 4))
+
 ;; Everything completion
 (use-package ivy
   :demand
@@ -361,5 +370,12 @@
   (magit-post-refresh . diff-hl-magit-post-refresh)
   :config
   (global-diff-hl-mode))
+
+;; Highlight to-do items in comments
+(use-package hl-todo
+  :custom
+  (hl-todo-highlight-punctuation ":")
+  :hook
+  (prog-mode . hl-todo-mode))
 
 ;;; init.el ends here
